@@ -2,6 +2,9 @@ set -eo pipefail
 
 echo "--- :package: Build job checkout directory"
 
+echo "Sleeping for 10 seconds 😅"
+sleep 10
+
 pwd
 ls -la
 
