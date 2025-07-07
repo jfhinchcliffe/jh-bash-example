@@ -3,8 +3,6 @@ description: "An example pipeline that runs a simple Bash script with artifacts 
 emoji: ":bash:"
 languages:
   - "Shell"
-  - "YAML"
-  - "Bash"
 steps:
   - label: ":pipeline:"
     command: "buildkite-agent pipeline upload"
