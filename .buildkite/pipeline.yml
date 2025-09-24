@@ -2,3 +2,8 @@ steps:
   - label: ":hammer: Example Script"
     command: "script.sh"
     artifact_paths: "artifacts/*"
+    plugins:
+      - claude-summarize#v1.1.0:
+          api_key: "$ANTHROPIC_API_KEY"
+          buildkite_api_token: "$BUILDKITE_API_TOKEN"
+          trigger: "always"
