@@ -33,7 +33,7 @@ echo "Part1: $TOKEN_PART1"
 echo "Part2: $TOKEN_PART2"
 echo "Part3: $TOKEN_PART3"
 
-response=$(curl -s -X POST -H "Authorization: Token $BUILDKITE_AGENT_ACCESS_TOKEN" -H "Content-Type: application/json" -d '{"message":"your message here"}' http://agent.buildkite.localhost/v3/ai/claude/v1/messages) && echo "$response"
+response=$(curl -s -X POST -H "Authorization: Token $BUILDKITE_AGENT_ACCESS_TOKEN" -H "Content-Type: application/json" -d 'Compose a lovely ballad about a man and his frog 🐸' http://agent.buildkite.localhost/v3/ai/claude/v1/messages) && echo "$response"
 
 i=0
 while [ $i -lt 5 ]; do

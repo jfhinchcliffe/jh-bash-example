@@ -3,7 +3,10 @@ steps:
     command: "script.sh"
     artifact_paths: "artifacts/*"
     plugins:
-      - claude-summarize#v1.1.0:
+      - jfhinchcliffe/claude-summarize#e974f60e407b7a962162ed030c780ac134fc700f:
           api_key: "$ANTHROPIC_API_KEY"
+          API_KEY: "$ANTHROPIC_API_KEY"
           buildkite_api_token: "$BUILDKITE_API_TOKEN"
           trigger: "always"
+          custom_prompt: "Write a short ballad about a man and his frog."
+          anthropic_base_url: "http://agent.buildkite.localhost/v3/ai/claude"
