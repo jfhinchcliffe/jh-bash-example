@@ -1,12 +1,39 @@
 steps:
+  - label: "Generate some logs to summarize"
+    key: "log_thing"
+    command: |
+      echo "🏗️ Build Health Report"
+      echo "====================="
+      echo ""
+      echo "Coffee consumed: $((RANDOM % 10 + 1)) cups"
+      echo "Tests passed: $((RANDOM % 100 + 50))%"
+      echo "Code quality: $(shuf -n 1 -e "Excellent" "Good" "Could be better" "Needs improvement")"
+      echo "Developer mood: $(shuf -n 1 -e "😊" "🤔" "😴" "🎉" "🔥")"
+      echo "Bugs fixed: $((RANDOM % 20))"
+      echo "New bugs introduced: $((RANDOM % 5))"
+      echo ""
+      echo "Notable events during build:"
+      echo "- Agent successfully avoided distraction by cute dog videos"
+      echo "- Cache hit rate better than expected"
+      echo "- No rubber ducks were harmed in the making of this build"
+      echo "=== Error detected ==="
+      echo "Something went wrong!"
+      exit 1
+  - label: "Create a random file and put some nonsense in it"
+    key: "file_thing"
+    command: |
+      cat > myfile.txt << 'EOF'
+      This is some content
+      Multiple lines work too
+      SNAAAKES!✨
+      EOF
+      cat myfile.txt
   - label: ":hammer: Example Script"
-    command: "script.sh"
-    artifact_paths: "artifacts/*"
+    command: "echo 🔥"
     plugins:
-      - jfhinchcliffe/claude-summarize#e974f60e407b7a962162ed030c780ac134fc700f:
-          api_key: "$ANTHROPIC_API_KEY"
-          API_KEY: "$ANTHROPIC_API_KEY"
-          buildkite_api_token: "$BUILDKITE_API_TOKEN"
+      - jfhinchcliffe/claude-summarize#059cda42c3ccb526380bf12bdeada5bd7cfcf85e:
           trigger: "always"
-          custom_prompt: "Write a short ballad about a man and his frog."
-          anthropic_base_url: "http://agent.buildkite.localhost/v3/ai/claude"
+          annotate: true
+          hosted_models: true
+          custom_prompt: "Check the logs from this build and summarize"
+          analysis_level: "build"
