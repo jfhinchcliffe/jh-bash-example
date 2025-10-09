@@ -1,7 +1,0 @@
-#!/bin/bash
-echo "Getting secrets... 🍎"
-ANTHROPIC_API_KEY=$(buildkite-agent secret get ai_anthropic)
-export ANTHROPIC_API_KEY
-
-BUILDKITE_API_TOKEN=$(buildkite-agent secret get ai_buildkite)
-export BUILDKITE_API_TOKEN
