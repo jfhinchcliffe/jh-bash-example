@@ -1,3 +1,5 @@
+secrets:
+  BUILDKITE_API_TOKEN: UA_TOKEN
 steps:
   - label: "Generate some logs to summarize"
     key: "log_thing"
@@ -28,8 +30,13 @@ steps:
       SNAAAKES!✨
       EOF
       cat myfile.txt
-  - label: ":hammer: Example Script"
-    command: "echo 🔥"
+  - label: ":robot: summarize"
+    command: "echo 'Running some build step...'"
+    depends_on:
+      - step: "log_thing"
+        allow_failure: true
+      - step: "file_thing"
+        allow_failure: true
     plugins:
       - jfhinchcliffe/claude-summarize#059cda42c3ccb526380bf12bdeada5bd7cfcf85e:
           trigger: "always"
