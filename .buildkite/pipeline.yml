@@ -38,7 +38,7 @@ steps:
       - step: "file_thing"
         allow_failure: true
     plugins:
-      - jfhinchcliffe/claude-summarize#059cda42c3ccb526380bf12bdeada5bd7cfcf85e:
+      - jfhinchcliffe/claude-summarize#96e36c3c054d329494fe12c2b9b8713951c39687:
           trigger: "always"
           annotate: true
           hosted_models: true
